@@ -28,7 +28,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build
-        run: ./gradlew monolith:build -x test -Pversion=${{ github.ref_name }} -Dspring.profiles.active=container --scan --no-daemon
+        run: ./gradlew build -x test -Pversion=${{ github.ref_name }} -Dspring.profiles.active=container --scan --no-daemon
 
       - name: Archive jar artifacts
         uses: actions/upload-artifact@v4
