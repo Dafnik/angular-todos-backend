@@ -1,0 +1,34 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+spring:
+  application:
+    name: todo
+  main:
+    allow-bean-definition-overriding: true
+
+auth:
+  keys:
+    directory: keys/some
+    user:
+      access-token:
+        private: keys/some/user-access-token-private.key
+        public: keys/some/user-access-token-public.key
+      refresh-token:
+        private: keys/some/user-refresh-token-private.key
+        public: keys/some/user-refresh-token-public.key
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /swagger/docs-api
+  swagger-ui:
+    path: /swagger/docs
+  packagesToScan: me.dafnik
+
+logging:
+  level:
+    me.dafnik: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
