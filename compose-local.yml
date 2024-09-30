@@ -1,0 +1,26 @@
+services:
+  backend:
+    container_name: angular-todos-dev-backend
+    restart: unless-stopped
+    build:
+      context: .
+    ports:
+      - "80:8080"
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      mariadb:
+        condition: service_healthy
+    volumes:
+      - angular-todos-backend:/var/lib/angular-todos
+    environment:
+      - AUTH_KEYS_DIRECTORY=/var/lib/angular-todos/authentication-keys
+    networks:
+      - angular-todos-backend
+    # No healthcheck possible as the container is distroless and therefore has no bash nor other tools to make requests
+
+volumes:
+  angular-todos-backend:
+
+
+
