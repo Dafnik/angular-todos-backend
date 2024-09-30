@@ -37,7 +37,6 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint
 class UserWebSecurityConfig(
     val keyUtils: KeyUtils
 ) {
-
     /**
      * SecurityFilterChain for user authentication
      */
