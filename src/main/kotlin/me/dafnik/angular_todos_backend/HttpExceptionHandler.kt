@@ -13,11 +13,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseBody
 import java.lang.reflect.InvocationTargetException
-import kotlin.jvm.java
 
 @ControllerAdvice
 class HttpExceptionHandler {
-    private final val logger: Logger = LoggerFactory.getLogger(HttpExceptionHandler::class.java)
     private final val jsonHeader = HttpHeaders()
 
     init {
