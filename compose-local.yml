@@ -6,11 +6,6 @@ services:
       context: .
     ports:
       - "80:8080"
-    depends_on:
-      rabbitmq:
-        condition: service_healthy
-      mariadb:
-        condition: service_healthy
     volumes:
       - angular-todos-backend:/var/lib/angular-todos
     environment:
