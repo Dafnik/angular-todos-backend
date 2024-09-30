@@ -19,5 +19,4 @@ class UserService(val passwordEncoder: PasswordEncoder) {
     fun getById(id: Long): User? = users.find { it.id == id }
     fun getByIdOrThrow(id: Long) = users.find { it.id == id } ?: throw NotFoundException()
 
-    fun getByAuth(authentication: Authentication) = getByEmail(authentication.name) ?: throw UnauthorizedException()
 }
