@@ -12,6 +12,6 @@ data class RefreshJwtWithSessionTokenDto(
 )
 
 data class JwtResponse(
-    var accessToken: String?,
-    var refreshToken: String? = null
+    var accessToken: String,
+    var refreshToken: String
 )
