@@ -38,6 +38,7 @@ jobs:
           retention-days: 1
 
   build-publish-docker:
+    permissions: write-all
     needs: build-jar
     runs-on: ubuntu-latest
     steps:
@@ -56,12 +57,11 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Login to GitHub Container Registry
+      - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_SECRET }}
 
       - name: Build and push prod Docker image
         uses: docker/build-push-action@v6
@@ -72,5 +72,5 @@ jobs:
           build-args: |
             version=${{ github.ref_name }}
           tags: |
-            ghcr.io/dafnik/angular-todos-backend:${{ github.ref_name }}
-            ghcr.io/dafnik/angular-todos-backend:latest
+            dafnik/angular-todos-backend:${{ github.ref_name }}
+            dafnik/angular-todos-backend:latest
