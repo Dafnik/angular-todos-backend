@@ -1,11 +1,10 @@
 services:
   backend:
-    container_name: angular-todos-dev-backend
+    container_name: angular-todos-backend
     restart: unless-stopped
-    build:
-      context: .
+    image: dafnik/angular-todos-backend:latest
     ports:
-      - "80:8080"
+      - "8080:8080"
     volumes:
       - angular-todos-backend:/var/lib/angular-todos
     environment:
@@ -17,5 +16,6 @@ services:
 volumes:
   angular-todos-backend:
 
-
+networks:
+  angular-todos-backend:
 
