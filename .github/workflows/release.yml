@@ -73,4 +73,4 @@ jobs:
             version=${{ github.ref_name }}
           tags: |
             ghcr.io/dafnik/angular-todos-backend:${{ github.ref_name }}
-            ghcr.io/dafnik/angular-todos:latest
+            ghcr.io/dafnik/angular-todos-backend:latest
