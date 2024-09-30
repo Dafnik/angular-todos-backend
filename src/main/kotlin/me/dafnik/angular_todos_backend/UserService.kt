@@ -1,5 +1,6 @@
 package me.dafnik.angular_todos_backend
 
+import org.springframework.security.core.Authentication
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 
@@ -16,4 +17,7 @@ class UserService(val passwordEncoder: PasswordEncoder) {
 
     fun getByEmail(mail: String): User? = users.find { it.email == mail }
     fun getById(id: Long): User? = users.find { it.id == id }
+    fun getByIdOrThrow(id: Long) = users.find { it.id == id } ?: throw NotFoundException()
+
+    fun getByAuth(authentication: Authentication) = getByEmail(authentication.name) ?: throw UnauthorizedException()
 }
