@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: monolith-jar
-          path: ./monolith/build/libs/
+          path: ./build/libs/
           retention-days: 1
 
   build-publish-docker:
@@ -48,7 +48,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: monolith-jar
-          path: ./monolith/build/libs/
+          path: ./build/libs/
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
